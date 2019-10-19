@@ -1,0 +1,59 @@
+{
+  "name": "Google-Sign-in",
+  "version": "1.0.0",
+  "description": "This project will help you sign in to your web application with google",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && mkdir dist && npm run build-with-babel",
+    "build-with-babel": "babel ./server -d dist",
+    "start": "node ./dist/bin/www",
+    "start:dev": "babel-node ./server/bin/www",
+    "mocha:test": "mocha --require @babel/register ./server/spec/tester.js --timeout 10000 --exit",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm run mocha:test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pomile/Google-Sign-in.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pomile/Google-Sign-in/issues"
+  },
+  "homepage": "https://github.com/Pomile/Google-Sign-in#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "sinon": "^7.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-plugin-istanbul": "^5.2.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.5",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
+    "passport-mock": "0.0.3",
+    "rimraf": "^2.6.3",
+    "supertest": "^4.0.2",
+    "zombie": "^6.1.4"
+  }
+}

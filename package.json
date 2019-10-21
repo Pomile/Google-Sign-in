@@ -3,13 +3,26 @@
   "version": "1.0.0",
   "description": "This project will help you sign in to your web application with google",
   "main": "index.js",
+  "nyc": {
+    "all": true,
+    "sourceMap": false,
+    "instrument": false,
+    "include": [
+      "server/"
+    ],
+    "exclude": [
+      "server/spec/",
+      "server/src/helpers/passport.js",
+      "server/index.js"
+    ]
+  },
   "scripts": {
     "build": "rimraf dist && mkdir dist && npm run build-with-babel",
     "build-with-babel": "babel ./server -d dist",
     "start": "node ./dist/bin/www",
     "start:dev": "babel-node ./server/bin/www",
     "mocha:test": "mocha --require @babel/register ./server/spec/tester.js --timeout 10000 --exit",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm run mocha:test",
+    "test": "cross-env NODE_ENV=test nyc npm run mocha:test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -48,10 +61,14 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
+    "jsdom": "15.2.0",
+    "jsdom-global": "3.0.2",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
+    "passport-custom": "^1.1.0",
     "passport-mock": "0.0.3",
+    "passport-mock-strategy": "^2.0.0",
     "rimraf": "^2.6.3",
     "supertest": "^4.0.2",
     "zombie": "^6.1.4"
